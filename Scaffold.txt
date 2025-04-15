@@ -1,0 +1,15 @@
+Scaffold-DbContext "Server=sql.bumc.bu.edu;Database=BUMC_ORG; TrustServerCertificate=true;Trusted_Connection=True;MultipleActiveResultSets=true;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Data -Namespace T32_TraineeGrant -Tables T32_Questionnaire.Person,TrainingRecordAbstract,T32_Questionnaire.TrainingRecordManuscript,T32_Questionnaire.TrainingRecordPatents,T32_Questionnaire.TrainingRecordVideo,T32_Questionnaire.TrainingRecord -Force 
+
+
+ var staff1 = staff
+                .Select(a => new SelectListItem()
+                {
+                    Value = a.Osastaff,
+                    Text = a.Osastaff
+                })
+                .ToList();
+ ViewBag.firstdraftwriter = staff1;
+
+<select asp-for="FirstDraftWriter" class="form-control" asp-items="ViewBag.firstdraftwriter">
+            @* <option selected>---Select Employee---</option> *@
+</select>

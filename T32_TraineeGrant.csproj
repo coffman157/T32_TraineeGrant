@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Views\TrainingRecords\**" />
+    <Compile Remove="Views\Training\**" />
+    <Content Remove="Views\TrainingRecords\**" />
+    <Content Remove="Views\Training\**" />
+    <EmbeddedResource Remove="Views\TrainingRecords\**" />
+    <EmbeddedResource Remove="Views\Training\**" />
+    <None Remove="Views\TrainingRecords\**" />
+    <None Remove="Views\Training\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="BumcOrgContext.cs" />
+    <Compile Remove="Controllers\TrainingController.cs" />
+    <Compile Remove="Controllers\TrainingRecordsController.cs" />
+    <Compile Remove="Startup - Copy.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.4">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SQLServer" Version="9.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
+  </ItemGroup>
+
+</Project>

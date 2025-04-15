@@ -1,0 +1,100 @@
+﻿@model T32_TraineeGrant.TrainingRecord
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>TrainingRecord</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Personid" class="control-label"></label>
+                <input asp-for="Personid" class="form-control" />
+                <span asp-validation-for="Personid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Buid" class="control-label"></label>
+                <input asp-for="Buid" class="form-control" value=@ViewBag.buid />
+                <span asp-validation-for="Buid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Name of research faculty member</label>
+                <input asp-for="Researchfaculty" class="form-control" value=@ViewBag.personid />
+                <span asp-validation-for="Researchfaculty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Training Start Date (MM/YY)</label>
+                <input asp-for="Trainingstartmm" class="form-control" />
+                <span asp-validation-for="Trainingstartmm" class="text-danger"></span>
+            </div>
+            @* <div class="form-group">
+                <label asp-for="Trainingstartyy" class="control-label"></label>
+                <input asp-for="Trainingstartyy" class="form-control" />
+                <span asp-validation-for="Trainingstartyy" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <label class="control-label">Training End Date (MM/YY)</label>
+                <input asp-for="Trainingendmm" class="form-control" />
+                <span asp-validation-for="Trainingendmm" class="text-danger"></span>
+            </div>
+            @* <div class="form-group">
+                <label asp-for="Trainingendyy" class="control-label"></label>
+                <input asp-for="Trainingendyy" class="form-control" />
+                <span asp-validation-for="Trainingendyy" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <label asp-for="Stilltrainee" class="control-label">I am still a trainee with this mentor.</label>
+                <select asp-for="Stilltrainee">
+                    <option value="">Please Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+                <span asp-validation-for="Stilltrainee" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <div class="form-group">
+                    <label class="control-label">Are you in this mentor's lab as a short-term/summer program student, master's student,rotation student,prdoctoral trainee, or postdoctoral trainee? </label><br />
+                    <select asp-for="Status">
+                        <option value="">Please Select</option>
+                        <option value="Short term summer student">Short term summer student</option>
+                        <option value="Rotation student">Rotation student</option>
+                        <option value="Master's student">Master's student</option>
+                        <option value="Predoctoral trainee">Predoctoral</option>
+                        <option value="Postdoctoral trainee">Postdoctoral trainee</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Other status</label>
+                <input asp-for="Statusother" class="form-control" />
+                <span asp-validation-for="Statusother" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Presentations" class="control-label"></label>
+                <select asp-for="Presentations">
+                    <option value="">Please Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+                <span asp-validation-for="Presentations" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -1,0 +1,151 @@
+﻿@model T32_TraineeGrant.Person
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Person</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label style="font-weight:bold">Last Name</label>
+                <input asp-for="Buid" class="form-control" />
+                <span asp-validation-for="Buid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label style="font-weight:bold">Last Name</label>
+                <input asp-for="Lastname" class="form-control" />
+                <span asp-validation-for="Lastname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label style="font-weight:bold">Last Name</label>
+                <input asp-for="Lastname" class="form-control" />
+                <span asp-validation-for="Lastname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label style="font-weight:bold">First Name</label>
+                <input asp-for="Firstname" class="form-control" />
+                <span asp-validation-for="Firstname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label" style="font-weight:bold"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label style="font-weight:bold">ORCID</label>
+                <input asp-for="Orcidid" class="form-control" />
+                <span asp-validation-for="Orcidid" class="text-danger"></span>
+            </div>
+           
+
+            <div class="row">
+                <strong>Citizenship</strong>
+
+            </div>
+    
+    @* <div class="form-group">
+        <div id="question1">
+            <p>Please select your gender:</p>
+            <div id="answer11">
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Male</label><br>
+            </div>
+            <div id="answer12">
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label><br>
+            </div>
+            <div id="answer13">
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other">Other</label>
+            </div>
+        </div>
+    </div> *@ 
+
+
+    <div class="form-group">
+        <select asp-for="Citizenship">
+            <option value="">Please Select</option>
+            <option value="US Citizen">US Citizen</option>
+            <option value="US National">US National</option>
+            <option value="Permanent Resident">Permanent Resident</option>
+            <option value="Other">Other</option>
+
+        </select>
+                <span asp-validation-for="Citizenship" class="text-danger"></span>
+    </div>
+    @* <div class="form-group">
+            <div class="row">
+            <div class="radio-class">
+                <input class="radios__input" id="uscitizen" name="Citizenship" type="radio">
+                        <label class="label" for="uscitizen">US Citizen</label>
+            </div>
+            <div class="radios__item">
+                    <input class="radios__input" id="usnational" name="Citizenship" type="radio">
+                <label class="label" for="usnational">US National</label>
+            </div>
+            <div class="radios__item">
+                    <input class="radios__input" id="permresident" name="Citizenship" type="radio">
+                <label class="label" for="permresident">Permanent Resident</label>
+            </div>
+            <div class="radios__item">
+                    <input class="radios__input" id="otherresid" name="Citizenship" type="radio">
+                        <label class="label" for="otherresid">Other</label>
+            </div> 
+            </div>
+            </div> *@
+
+    <div class="form-group">
+        <label class="control-label">Are you currently a predoctoral of postdoctoral trainee?</label>
+                <select asp-for="Position">
+                    <option value="">Please Select</option>
+                    <option value="Predoctoral Trainee">Predoctoral Trainee</option>
+                    <option value="Postdoctoral Trainee">Postdoctoral Trainee</option>
+                  
+                    <option value="Other">Other</option>
+
+                </select>
+        <span asp-validation-for="Position" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label> Other Trainee</label>
+        <input asp-for="Positionother" class="form-control" />
+        <span asp-validation-for="Positionother" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label> Have you been accepted officially into a lab for your dissertation research?</label>
+        <input asp-for="Acceptedpredoc" class="form-control" />
+        <span asp-validation-for="Acceptedpredoc" class="text-danger"></span>
+    </div>
+            <div class="form-group">
+                <label> Who is your research faculty mentor?</label>
+                <input asp-for="Facultymentor" class="form-control" />
+                <span asp-validation-for="Acceptedpredoc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label> How many years have you been in this position?</label>
+                <input asp-for="Yearsposition" class="form-control" />
+                <span asp-validation-for="Acceptedpredoc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+    </form>
+</div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

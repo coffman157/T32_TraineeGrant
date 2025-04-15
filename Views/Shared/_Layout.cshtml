@@ -1,0 +1,116 @@
+﻿@using Microsoft.AspNetCore.Http
+@* @inject MSRO_DLL.Interfaces.IAuthorizationManager _authr; *@
+@inject IHttpContextAccessor HttpContextAccessor
+
+@* @using MSRO.Extentions; *@
+
+@{
+    var signed = false;
+    @if (User.Identities.Any(u => u.IsAuthenticated))
+    {
+        signed = true;
+    }
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Training Grants</title>
+    <link rel="icon" type="image/x-icon" href="https://wwwapp.bumc.bu.edu/msro/images/favicon.ico"> 
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/e2468438a6.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/master-logo-small.gif" asp-append-version="true" />
+                    &nbsp;
+                   T32 - Trainee Grant
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+
+                    <ul class="navbar-nav flex-grow-1 text-right">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Help">Help</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About" target="_blank">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Main" target="_blank">Menu</a>
+                        </li>
+                        @if (signed)
+                        {
+                            <li class="nav-item">
+
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Authentication" asp-action="Logout">Log out</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Authentication" asp-action="Login">Log in</a>
+                            </li>
+                        }
+                    </ul>
+
+                    @if (signed)
+                    {
+                        <ul class="navbar-nav flex-grow-1 text-left">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">View Applications</a>
+                            </li>
+                        </ul>
+                    }
+                </div>
+            </div>
+        </nav>
+    </header>
+   <div class="container">
+        <main role="main" class="pb-3">
+            <div class="row">
+                @* @{
+                    var tempData = TempData.Get<MessageVM>("UserMessage");
+                    if (tempData != null)
+                    {
+                        var message = (MessageVM)tempData;
+                        <div class="alert @message.CssClassName">
+                            <strong>@message.Title</strong>@message.Message
+                        </div>
+                    }
+                } *@
+            </div>
+            @RenderBody()
+        </main>
+    </div> 
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; @DateTime.Today.Year - Boston University
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <environment include="Development">
+        <script src="~/js/vue.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    </environment>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

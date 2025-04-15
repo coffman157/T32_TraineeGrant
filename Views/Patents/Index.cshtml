@@ -1,0 +1,65 @@
+﻿@model IEnumerable<T32_TraineeGrant.TrainingRecordPatent>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Patents</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Personid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Trainingrecordid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Buid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inventors)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dateissued)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Personid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Trainingrecordid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Buid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Inventors)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dateissued)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
