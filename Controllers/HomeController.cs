@@ -24,17 +24,21 @@ namespace T32_TraineeGrant.Controllers
                      
            if (T32_TraineeGrant.Extensions.HttpRequestExtensions.IsLocal(HttpContext.Request))
             {
-
+                HttpContext.Session.SetString("buid", "U32220128");
+                HttpContext.Session.SetString("firstname", "Jerry");
+                HttpContext.Session.SetString("lastname", "Coffman");
+                HttpContext.Session.SetString("status", "students");
+                HttpContext.Session.SetString("email", "coffman@bu.edu");
                 //HttpContext.Session.SetString("buid", "U55555555");
                 //HttpContext.Session.SetString("firstname", "Jim");
                 //HttpContext.Session.SetString("lastname", "Vlachos");
                 //HttpContext.Session.SetString("status", "students");
                 //HttpContext.Session.SetString("email", "jvlachos@bu.edu");
-                HttpContext.Session.SetString("buid", "U89087945");
-                HttpContext.Session.SetString("firstname", "Peter");
-                HttpContext.Session.SetString("lastname", "Flynn");
-                HttpContext.Session.SetString("status", "students");
-                HttpContext.Session.SetString("email", "pflynn@bu.edu");
+                //HttpContext.Session.SetString("buid", "U89087945");
+                //HttpContext.Session.SetString("firstname", "Peter");
+                //HttpContext.Session.SetString("lastname", "Flynn");
+                //HttpContext.Session.SetString("status", "students");
+                //HttpContext.Session.SetString("email", "pflynn@bu.edu");
                 //ViewBag.buid = HttpContext.Session.GetString("buid");
                 //ViewBag.firstname = HttpContext.Session.GetString("firstname");
                 //ViewBag.lastname = HttpContext.Session.GetString("lastname");
@@ -69,7 +73,8 @@ namespace T32_TraineeGrant.Controllers
             }
             else
             {
-                return RedirectToAction("Main", "Home");
+                
+                return RedirectToAction("Index", "TrainingRec");
             }
         }
         public IActionResult Main()

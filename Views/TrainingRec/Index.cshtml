@@ -5,7 +5,9 @@
 }
 
 <h1>List of Training Grants</h1>
-
+<p>
+    These are the Training Grants you have participated in.  To add a new one click "Create New".  If you click "Edit" for a Training Grant, you will be able to edit the Training Grant information and enter a history of Abstracts, Manuscripts, Web Sites, or Video presentations.   
+</p>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -85,9 +87,9 @@
                 @Html.DisplayFor(modelItem => item.Presentations)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+               @*  <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> *@
             </td>
         </tr>
 }

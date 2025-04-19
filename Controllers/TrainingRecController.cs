@@ -21,7 +21,13 @@ namespace T32_TraineeGrant.Controllers
         // GET: TrainingRec
         public async Task<IActionResult> Index()
         {
-            return View(await _context.TrainingRecords.ToListAsync());
+            string buid = HttpContext.Session.GetString("buid");
+            var Training = _context.TrainingRecords.Where(a => a.Buid == buid).ToList();
+            ViewBag.firstname = HttpContext.Session.GetString("firstname");
+            ViewBag.lastname = HttpContext.Session.GetString("lastname");
+            ViewBag.email = HttpContext.Session.GetString("email");
+            ViewBag.buid = HttpContext.Session.GetString("buid");
+            return View(Training);
         }
 
         // GET: TrainingRec/Details/5

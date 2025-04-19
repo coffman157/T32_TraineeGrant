@@ -14,18 +14,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Authentication\**" />
     <Compile Remove="Views\TrainingRecords\**" />
     <Compile Remove="Views\Training\**" />
+    <Content Remove="Views\Authentication\**" />
     <Content Remove="Views\TrainingRecords\**" />
     <Content Remove="Views\Training\**" />
+    <EmbeddedResource Remove="Views\Authentication\**" />
     <EmbeddedResource Remove="Views\TrainingRecords\**" />
     <EmbeddedResource Remove="Views\Training\**" />
+    <None Remove="Views\Authentication\**" />
     <None Remove="Views\TrainingRecords\**" />
     <None Remove="Views\Training\**" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="BumcOrgContext.cs" />
+    <Compile Remove="Controllers\AuthenticationController.cs" />
     <Compile Remove="Controllers\TrainingController.cs" />
     <Compile Remove="Controllers\TrainingRecordsController.cs" />
     <Compile Remove="Startup - Copy.cs" />
