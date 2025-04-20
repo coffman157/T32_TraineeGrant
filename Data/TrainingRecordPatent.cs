@@ -9,7 +9,7 @@ public partial class TrainingRecordPatent
 
     public int? Personid { get; set; }
 
-    public string? Trainingrecordid { get; set; }
+    public int? Trainingrecordid { get; set; }
 
     public string? Buid { get; set; }
 

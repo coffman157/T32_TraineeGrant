@@ -10,19 +10,21 @@
 
         <table width="800">
             <tr width="800">
-                <td><a class="link-opacity-100" href="~/Abstracts/index">Abstracts</a>
-                </td><td>
-                <a class="link-opacity-100" href="~/Manuscripts/index">Manuscripts</a>
+                <td>
+                    <a class="link-opacity-100" href="~/Abstracts/index">Abstracts</a>
                 </td>
                 <td>
-                <a class="link-opacity-100" href="~/Patents/index">Patents</a>
+                    <a class="link-opacity-100" href="~/Manuscripts/index">Manuscripts</a>
                 </td>
                 <td>
-                <a class="link-opacity-100" href="~/Videos/index">Videos</a>
+                    <a class="link-opacity-100" href="~/Patents/index">Patents</a>
+                </td>
+                <td>
+                    <a class="link-opacity-100" href="~/Videos/index">Videos</a>
                 </td>
             </tr>
-            </table>
-</div>
+        </table>
+    </div>
 </div>
 <h4>
     Training Record for <label class="control-label">@ViewBag.firstname</label>&nbsp;<label class="control-label">@ViewBag.lastname</label>
@@ -31,17 +33,28 @@
 <div class="row">
     <div class="col-md-8">
         <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                       <input type="hidden" asp-for="Id" />
-            <div class="form-group" style="visibility:collapse">
-                <label asp-for="Personid" class="control-label"></label>
-                <input asp-for="Personid" class="form-control" value=@ViewBag.personid />
-                <span asp-validation-for="Personid" class="text-danger"></span>
-            </div>
+            <input type="hidden" asp-for="Personid" value=@ViewBag.personid />
+            <input type="hidden" asp-for="Buid"  value=@ViewBag.buid />
+           @*  <div style="visibility:collapse">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="Personid" class="control-label"></label>
+                    <input asp-for="Personid" class="form-control" value=@ViewBag.personid readonly />
+                    <span asp-validation-for="Personid" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Buid" class="control-label"></label>
+                    <input asp-for="Buid" class="form-control" value=@ViewBag.buid readonly />
+                    <span asp-validation-for="Buid" class="text-danger"></span>
+                </div>
+            </div> *@
             <div class="form-group">
-                <label asp-for="Buid" class="control-label"></label>
-                <input asp-for="Buid" class="form-control" value=@ViewBag.buid />
-                <span asp-validation-for="Buid" class="text-danger"></span>
+                <label class="control-label">Training Grant</label>
+                <select asp-for="Trainingrantid" class="form-control" asp-items="ViewBag.grants">
+                    <option selected>---Select Grant---</option>
+                </select>
+                <span asp-validation-for="Researchfaculty" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label class="control-label">Name of research faculty member</label>
@@ -92,7 +105,7 @@
                     </select>
                     <span asp-validation-for="Status" class="text-danger"></span>
                 </div>
-                
+
             </div>
             <div class="form-group">
                 <label class="control-label">Other status</label>

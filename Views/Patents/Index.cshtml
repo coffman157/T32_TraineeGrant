@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<T32_TraineeGrant.TrainingRecordPatent>
 
-@{
-    ViewData["Title"] = "Index";
-}
-
-<h1>Patents</h1>
+<h4>
+    Patents<br />
+    @ViewBag.projname<br />
+    @ViewBag.Lastname @ViewBag.firstname
+</h4>
 
 <p>
     <a asp-action="Create">Create New</a>

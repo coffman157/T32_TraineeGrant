@@ -1,27 +1,26 @@
 ﻿@model T32_TraineeGrant.TrainingRecordAbstract
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Add Abstract";
 }
 
 <h1>Create</h1>
 
-<h4>Abstracts</h4>
+<h4>
+    Add Abstract<br />
+    @ViewBag.projname<br/>
+    @ViewBag.Lastname @ViewBag.firstname
+</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Trainingrecordid" class="control-label"></label>
-                <input asp-for="Trainingrecordid" class="form-control" />
-                <span asp-validation-for="Trainingrecordid" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Buid" class="control-label"></label>
-                <input asp-for="Buid" class="form-control" value=@ViewBag.buid />
-                <span asp-validation-for="Buid" class="text-danger"></span>
-            </div>
+            
+                
+                <input asp-for="Trainingrecordid" type="hidden" value=@ViewBag.project /> 
+                   
+                <input asp-for="Buid" type="hidden" value=@ViewBag.buid />
+               
             <div class="form-group">
                 <label asp-for="Type" class="control-label"></label>
                 <input asp-for="Type" class="form-control" />

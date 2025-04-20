@@ -22,11 +22,12 @@ namespace T32_TraineeGrant.Controllers
         public async Task<IActionResult> Index()
         {
             string buid = HttpContext.Session.GetString("buid");
-            var Training = _context.TrainingRecords.Where(a => a.Buid == buid).ToList();
+            var Training = _context.TraineeGrants.Where(a => a.Buid == buid).ToList();
             ViewBag.firstname = HttpContext.Session.GetString("firstname");
             ViewBag.lastname = HttpContext.Session.GetString("lastname");
             ViewBag.email = HttpContext.Session.GetString("email");
             ViewBag.buid = HttpContext.Session.GetString("buid");
+           
             return View(Training);
         }
 
@@ -58,6 +59,15 @@ namespace T32_TraineeGrant.Controllers
             ViewBag.firstname = trainee.Firstname;
 
             ViewBag.lastname = trainee.Lastname;
+            var t32grants = _context.TrainingGrants
+               .Select(a => new SelectListItem()
+               {
+                   Value = a.Id.ToString(),
+                   Text = a.Title
+               })
+               .ToList();
+
+            ViewBag.grants =t32grants;
             return View();
         }
 
@@ -66,7 +76,7 @@ namespace T32_TraineeGrant.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Personid,Buid,Researchfaculty,Trainingstartmm,Trainingstartyy,Trainingendmm,Trainingendyy,Stilltrainee,Status,Statusother,Presentations")] TrainingRecord trainingRecord)
+        public async Task<IActionResult> Create([Bind("Id,Personid,Buid,Researchfaculty,Trainingstartmm,Trainingstartyy,Trainingendmm,Trainingendyy,Stilltrainee,Status,Statusother,Presentations,Trainingrantid")] TrainingRecord trainingRecord)
         {
             if (ModelState.IsValid)
             {
@@ -91,6 +101,17 @@ namespace T32_TraineeGrant.Controllers
             ViewBag.firstname = trainee.Firstname;
 
             ViewBag.lastname = trainee.Lastname;
+            var t32grants = _context.TrainingGrants
+              .Select(a => new SelectListItem()
+              {
+                  Value = a.Id.ToString(),
+                  Text = a.Title
+              })
+              .ToList();
+
+            ViewBag.grants = t32grants;
+            string proj = id.ToString();
+            HttpContext.Session.SetString("project", proj);
             var trainingRecord = await _context.TrainingRecords.FindAsync(id);
             if (trainingRecord == null)
             {
@@ -104,7 +125,7 @@ namespace T32_TraineeGrant.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Personid,Buid,Researchfaculty,Trainingstartmm,Trainingstartyy,Trainingendmm,Trainingendyy,Stilltrainee,Status,Statusother,Presentations")] TrainingRecord trainingRecord)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Personid,Buid,Researchfaculty,Trainingstartmm,Trainingstartyy,Trainingendmm,Trainingendyy,Stilltrainee,Status,Statusother,Presentations,Trainingrantid")] TrainingRecord trainingRecord)
         {
             if (id != trainingRecord.Id)
             {

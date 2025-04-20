@@ -19,7 +19,7 @@ public partial class TrainingRecordVideo
 
     public string? Website { get; set; }
 
-    public DateOnly? Dateuploaded { get; set; }
+    public DateTime? Dateuploaded { get; set; }
 
     public string? Url { get; set; }
 }

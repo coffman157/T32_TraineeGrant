@@ -1,11 +1,10 @@
 ﻿@model IEnumerable<T32_TraineeGrant.TrainingRecordAbstract>
 
-@{
-    ViewData["Title"] = "Index";
-}
-
-<h1>Abstracts</h1>
-
+<h4>
+   Abstracts<br />
+    @ViewBag.projname<br />
+    @ViewBag.Lastname @ViewBag.firstname
+</h4>
 <p>
     <a asp-action="Create">Create New</a>
 </p>

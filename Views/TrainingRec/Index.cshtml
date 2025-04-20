@@ -1,4 +1,4 @@
-﻿@model IEnumerable<T32_TraineeGrant.TrainingRecord>
+﻿@model IEnumerable<T32_TraineeGrant.TraineeGrant>
 
 @{
     ViewData["Title"] = "Index";
@@ -21,8 +21,13 @@
                 @Html.DisplayNameFor(model => model.Buid)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Trainingrantid)
+            </th>
+           
+            <th>
                 @Html.DisplayNameFor(model => model.Researchfaculty)
             </th>
+           
             <th>
                Start date
             </th>
@@ -52,6 +57,7 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
+            
         <tr>
             <td style="visibility:collapse">
                     @Html.DisplayFor(modelItem => item.Id)
@@ -59,12 +65,17 @@
             <td >
                 @Html.DisplayFor(modelItem => item.Buid)
             </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Researchfaculty)
             </td>
+               
             <td>
                 @Html.DisplayFor(modelItem => item.Trainingstartmm)
             </td>
+               
            @*  <td>
                 @Html.DisplayFor(modelItem => item.Trainingstartyy)
             </td> *@

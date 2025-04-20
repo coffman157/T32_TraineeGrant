@@ -22,12 +22,4 @@ Global
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EF149A66-84C4-4A1E-9EB1-F76F556D2435}
 	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 2
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://bumcit.visualstudio.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = T32_TraineeGrant.csproj
-		SccLocalPath1 = .
-	EndGlobalSection
 EndGlobal

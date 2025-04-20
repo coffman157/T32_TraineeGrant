@@ -21,7 +21,7 @@ public partial class TrainingRecordAbstract
 
     public string? City { get; set; }
 
-    public string? Date { get; set; }
+    public DateOnly? Date { get; set; }
 
     public string? PosterOral { get; set; }
 

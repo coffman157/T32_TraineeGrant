@@ -17,6 +17,10 @@ public partial class BumcOrgContext : DbContext
 
     public virtual DbSet<Person> People { get; set; }
 
+    public virtual DbSet<TraineeGrant> TraineeGrants { get; set; }
+
+    public virtual DbSet<TrainingGrant> TrainingGrants { get; set; }
+
     public virtual DbSet<TrainingRecord> TrainingRecords { get; set; }
 
     public virtual DbSet<TrainingRecordAbstract> TrainingRecordAbstracts { get; set; }
@@ -102,6 +106,60 @@ public partial class BumcOrgContext : DbContext
                 .HasColumnName("yearsposition");
         });
 
+        modelBuilder.Entity<TraineeGrant>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("Trainee_grants", "T32_Questionnaire");
+
+            entity.Property(e => e.Buid)
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .HasColumnName("buid");
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Personid).HasColumnName("personid");
+            entity.Property(e => e.Presentations)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("presentations");
+            entity.Property(e => e.Researchfaculty)
+                .HasMaxLength(512)
+                .IsUnicode(false)
+                .HasColumnName("researchfaculty");
+            entity.Property(e => e.Status)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("status");
+            entity.Property(e => e.Statusother)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("statusother");
+            entity.Property(e => e.Stilltrainee)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("stilltrainee");
+            entity.Property(e => e.Title)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("title");
+            entity.Property(e => e.Trainingendmm).HasColumnName("trainingendmm");
+            entity.Property(e => e.Trainingendyy).HasColumnName("trainingendyy");
+            entity.Property(e => e.Trainingrantid).HasColumnName("trainingrantid");
+            entity.Property(e => e.Trainingstartmm).HasColumnName("trainingstartmm");
+            entity.Property(e => e.Trainingstartyy).HasColumnName("trainingstartyy");
+        });
+
+        modelBuilder.Entity<TrainingGrant>(entity =>
+        {
+            entity.ToTable("TrainingGrant", "T32_Questionnaire");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Title)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("title");
+        });
+
         modelBuilder.Entity<TrainingRecord>(entity =>
         {
             entity.ToTable("TrainingRecord", "T32_Questionnaire");
@@ -132,22 +190,11 @@ public partial class BumcOrgContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("stilltrainee");
-            entity.Property(e => e.Trainingendmm)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("trainingendmm");
-            entity.Property(e => e.Trainingendyy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("trainingendyy");
-            entity.Property(e => e.Trainingstartmm)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("trainingstartmm");
-            entity.Property(e => e.Trainingstartyy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("trainingstartyy");
+            entity.Property(e => e.Trainingendmm).HasColumnName("trainingendmm");
+            entity.Property(e => e.Trainingendyy).HasColumnName("trainingendyy");
+            entity.Property(e => e.Trainingrantid).HasColumnName("trainingrantid");
+            entity.Property(e => e.Trainingstartmm).HasColumnName("trainingstartmm");
+            entity.Property(e => e.Trainingstartyy).HasColumnName("trainingstartyy");
         });
 
         modelBuilder.Entity<TrainingRecordAbstract>(entity =>
@@ -171,10 +218,7 @@ public partial class BumcOrgContext : DbContext
                 .HasMaxLength(250)
                 .IsUnicode(false)
                 .HasColumnName("conference");
-            entity.Property(e => e.Date)
-                .HasMaxLength(250)
-                .IsUnicode(false)
-                .HasColumnName("date");
+            entity.Property(e => e.Date).HasColumnName("date");
             entity.Property(e => e.PosterOral)
                 .HasMaxLength(250)
                 .IsUnicode(false)
@@ -248,23 +292,20 @@ public partial class BumcOrgContext : DbContext
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Buid)
-                .HasMaxLength(10)
-                .IsFixedLength()
+                .HasMaxLength(50)
+                .IsUnicode(false)
                 .HasColumnName("buid");
             entity.Property(e => e.Dateissued).HasColumnName("dateissued");
             entity.Property(e => e.Inventors)
-                .HasMaxLength(10)
-                .IsFixedLength()
+                .HasMaxLength(500)
+                .IsUnicode(false)
                 .HasColumnName("inventors");
             entity.Property(e => e.Personid).HasColumnName("personid");
             entity.Property(e => e.Title)
-                .HasMaxLength(10)
-                .IsFixedLength()
+                .HasMaxLength(500)
+                .IsUnicode(false)
                 .HasColumnName("title");
-            entity.Property(e => e.Trainingrecordid)
-                .HasMaxLength(10)
-                .IsFixedLength()
-                .HasColumnName("trainingrecordid");
+            entity.Property(e => e.Trainingrecordid).HasColumnName("trainingrecordid");
         });
 
         modelBuilder.Entity<TrainingRecordVideo>(entity =>
@@ -280,7 +321,9 @@ public partial class BumcOrgContext : DbContext
                 .HasMaxLength(10)
                 .IsUnicode(false)
                 .HasColumnName("buid");
-            entity.Property(e => e.Dateuploaded).HasColumnName("dateuploaded");
+            entity.Property(e => e.Dateuploaded)
+                .HasColumnType("datetime")
+                .HasColumnName("dateuploaded");
             entity.Property(e => e.Personid).HasColumnName("personid");
             entity.Property(e => e.Title)
                 .HasMaxLength(250)

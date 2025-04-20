@@ -4,9 +4,14 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1></h1>
 
-<h4>Patents</h4>
+<h4>
+    Add Patent<br />
+    @ViewBag.projname<br />
+    @ViewBag.Lastname @ViewBag.firstname
+</h4>
+<hr />
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,17 +19,17 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Personid" class="control-label"></label>
-                <input asp-for="Personid" class="form-control" />
+                <input asp-for="Personid" class="form-control" value=@ViewBag.personid />
                 <span asp-validation-for="Personid" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Trainingrecordid" class="control-label"></label>
-                <input asp-for="Trainingrecordid" class="form-control" />
+                <input asp-for="Trainingrecordid" class="form-control" value=@ViewBag.project />
                 <span asp-validation-for="Trainingrecordid" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Buid" class="control-label"></label>
-                <input asp-for="Buid" class="form-control" />
+                <input asp-for="Buid" class="form-control" value=@ViewBag.buid />
                 <span asp-validation-for="Buid" class="text-danger"></span>
             </div>
             <div class="form-group">

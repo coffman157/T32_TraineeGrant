@@ -21,6 +21,16 @@ namespace T32_TraineeGrant.Controllers
         // GET: Abstracts
         public async Task<IActionResult> Index()
         {
+            int proj1 = Convert.ToInt32(HttpContext.Session.GetString("project"));
+            string buid = HttpContext.Session.GetString("buid");
+            var trainee = _context.People.Where(a => a.Buid == buid).FirstOrDefault();
+            ViewBag.buid = trainee.Buid;
+            ViewBag.personid = trainee.Id;
+            ViewBag.firstname = trainee.Firstname;
+
+            ViewBag.lastname = trainee.Lastname;
+            var projname = _context.TrainingGrants.Where(a => a.Id == proj1).FirstOrDefault();
+            ViewBag.projname = projname.Title;
             return View(await _context.TrainingRecordAbstracts.ToListAsync());
         }
 
@@ -45,6 +55,8 @@ namespace T32_TraineeGrant.Controllers
         // GET: Abstracts/Create
         public IActionResult Create()
         {
+            ViewBag.project= HttpContext.Session.GetString("project");
+            int proj1 = Convert.ToInt32(HttpContext.Session.GetString("project"));
             string buid = HttpContext.Session.GetString("buid");
             var trainee = _context.People.Where(a => a.Buid == buid).FirstOrDefault();
             ViewBag.buid = trainee.Buid;
@@ -52,6 +64,9 @@ namespace T32_TraineeGrant.Controllers
             ViewBag.firstname = trainee.Firstname;
 
             ViewBag.lastname = trainee.Lastname;
+            var projname = _context.TrainingGrants.Where(a => a.Id == proj1).FirstOrDefault();
+            ViewBag.projname = projname.Title;
+          //  var grant=_context.TrainingGrants.Where(a=>a.Id==IDataTokensMetadata)
             return View();
             
         }
@@ -85,6 +100,16 @@ namespace T32_TraineeGrant.Controllers
             {
                 return NotFound();
             }
+            int proj1 = Convert.ToInt32(HttpContext.Session.GetString("project"));
+            string buid = HttpContext.Session.GetString("buid");
+            var trainee = _context.People.Where(a => a.Buid == buid).FirstOrDefault();
+            ViewBag.buid = trainee.Buid;
+            ViewBag.personid = trainee.Id;
+            ViewBag.firstname = trainee.Firstname;
+
+            ViewBag.lastname = trainee.Lastname;
+            var projname = _context.TrainingGrants.Where(a => a.Id == proj1).FirstOrDefault();
+            ViewBag.projname = projname.Title;
             return View(trainingRecordAbstract);
         }
 
