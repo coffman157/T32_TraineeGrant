@@ -15,6 +15,14 @@ public partial class BumcOrgContext : DbContext
     {
     }
 
+    public virtual DbSet<AdminReportsAbstract> AdminReportsAbstracts { get; set; }
+
+    public virtual DbSet<AdminReportsManuscript> AdminReportsManuscripts { get; set; }
+
+    public virtual DbSet<AdminReportsPatent> AdminReportsPatents { get; set; }
+
+    public virtual DbSet<AdminReportsVideo> AdminReportsVideos { get; set; }
+
     public virtual DbSet<Person> People { get; set; }
 
     public virtual DbSet<TraineeGrant> TraineeGrants { get; set; }
@@ -37,6 +45,397 @@ public partial class BumcOrgContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<AdminReportsAbstract>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("AdminReportsAbstracts", "T32_Questionnaire");
+
+            entity.Property(e => e.Acceptedpredoc)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("acceptedpredoc");
+            entity.Property(e => e.Authors)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("authors");
+            entity.Property(e => e.Buid)
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .HasColumnName("buid");
+            entity.Property(e => e.Citizenship)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("citizenship");
+            entity.Property(e => e.City)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("city");
+            entity.Property(e => e.Conference)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("conference");
+            entity.Property(e => e.Date).HasColumnName("date");
+            entity.Property(e => e.Dateadded).HasColumnName("dateadded");
+            entity.Property(e => e.Disability)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("disability");
+            entity.Property(e => e.Email)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("email");
+            entity.Property(e => e.Expr1)
+                .HasMaxLength(250)
+                .IsUnicode(false);
+            entity.Property(e => e.Facultymentor)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("facultymentor");
+            entity.Property(e => e.Firstname)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("firstname");
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Lastname)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("lastname");
+            entity.Property(e => e.Leaveofabsence)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("leaveofabsence");
+            entity.Property(e => e.Minority)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("minority");
+            entity.Property(e => e.Orcidid)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("orcidid");
+            entity.Property(e => e.Position)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("position");
+            entity.Property(e => e.Positionother)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("positionother");
+            entity.Property(e => e.PosterOral)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("poster_oral");
+            entity.Property(e => e.Presenter)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("presenter");
+            entity.Property(e => e.Title)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("title");
+            entity.Property(e => e.Trainingrecordid).HasColumnName("trainingrecordid");
+            entity.Property(e => e.Type)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("type");
+            entity.Property(e => e.Woman)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("woman");
+            entity.Property(e => e.Yearsposition)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("yearsposition");
+        });
+
+        modelBuilder.Entity<AdminReportsManuscript>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("AdminReportsManuscripts", "T32_Questionnaire");
+
+            entity.Property(e => e.Acceptedpredoc)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("acceptedpredoc");
+            entity.Property(e => e.Authors)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("authors");
+            entity.Property(e => e.Buid)
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .HasColumnName("buid");
+            entity.Property(e => e.Citizenship)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("citizenship");
+            entity.Property(e => e.Dateadded).HasColumnName("dateadded");
+            entity.Property(e => e.Disability)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("disability");
+            entity.Property(e => e.DoiPmidPmcid)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("doi_pmid_pmcid");
+            entity.Property(e => e.Email)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("email");
+            entity.Property(e => e.Expr1)
+                .HasMaxLength(250)
+                .IsUnicode(false);
+            entity.Property(e => e.Facultymentor)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("facultymentor");
+            entity.Property(e => e.Firstname)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("firstname");
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Journal)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("journal");
+            entity.Property(e => e.Lastname)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("lastname");
+            entity.Property(e => e.Leaveofabsence)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("leaveofabsence");
+            entity.Property(e => e.Minority)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("minority");
+            entity.Property(e => e.Orcidid)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("orcidid");
+            entity.Property(e => e.Pages)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("pages");
+            entity.Property(e => e.Position)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("position");
+            entity.Property(e => e.Positionother)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("positionother");
+            entity.Property(e => e.Status)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("status");
+            entity.Property(e => e.Statusother)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("statusother");
+            entity.Property(e => e.Title)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("title");
+            entity.Property(e => e.Trainingrecordid).HasColumnName("trainingrecordid");
+            entity.Property(e => e.Volume)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("volume");
+            entity.Property(e => e.Woman)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("woman");
+            entity.Property(e => e.Year)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("year");
+            entity.Property(e => e.Yearsposition)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("yearsposition");
+        });
+
+        modelBuilder.Entity<AdminReportsPatent>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("AdminReportsPatents", "T32_Questionnaire");
+
+            entity.Property(e => e.Acceptedpredoc)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("acceptedpredoc");
+            entity.Property(e => e.Buid)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("buid");
+            entity.Property(e => e.Citizenship)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("citizenship");
+            entity.Property(e => e.Dateadded).HasColumnName("dateadded");
+            entity.Property(e => e.Dateissued).HasColumnName("dateissued");
+            entity.Property(e => e.Disability)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("disability");
+            entity.Property(e => e.Email)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("email");
+            entity.Property(e => e.Expr1)
+                .HasMaxLength(250)
+                .IsUnicode(false);
+            entity.Property(e => e.Facultymentor)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("facultymentor");
+            entity.Property(e => e.Firstname)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("firstname");
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Inventors)
+                .HasMaxLength(500)
+                .IsUnicode(false)
+                .HasColumnName("inventors");
+            entity.Property(e => e.Lastname)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("lastname");
+            entity.Property(e => e.Leaveofabsence)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("leaveofabsence");
+            entity.Property(e => e.Minority)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("minority");
+            entity.Property(e => e.Orcidid)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("orcidid");
+            entity.Property(e => e.Personid).HasColumnName("personid");
+            entity.Property(e => e.Position)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("position");
+            entity.Property(e => e.Positionother)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("positionother");
+            entity.Property(e => e.Title)
+                .HasMaxLength(500)
+                .IsUnicode(false)
+                .HasColumnName("title");
+            entity.Property(e => e.Trainingrecordid).HasColumnName("trainingrecordid");
+            entity.Property(e => e.Woman)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("woman");
+            entity.Property(e => e.Yearsposition)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("yearsposition");
+        });
+
+        modelBuilder.Entity<AdminReportsVideo>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("AdminReportsVideos", "T32_Questionnaire");
+
+            entity.Property(e => e.Acceptedpredoc)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("acceptedpredoc");
+            entity.Property(e => e.Authors)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("authors");
+            entity.Property(e => e.Buid)
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .HasColumnName("buid");
+            entity.Property(e => e.Citizenship)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("citizenship");
+            entity.Property(e => e.Dateadded).HasColumnName("dateadded");
+            entity.Property(e => e.Dateuploaded)
+                .HasColumnType("datetime")
+                .HasColumnName("dateuploaded");
+            entity.Property(e => e.Disability)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("disability");
+            entity.Property(e => e.Email)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("email");
+            entity.Property(e => e.Expr1)
+                .HasMaxLength(250)
+                .IsUnicode(false);
+            entity.Property(e => e.Facultymentor)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("facultymentor");
+            entity.Property(e => e.Firstname)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("firstname");
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Lastname)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("lastname");
+            entity.Property(e => e.Leaveofabsence)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("leaveofabsence");
+            entity.Property(e => e.Minority)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("minority");
+            entity.Property(e => e.Orcidid)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("orcidid");
+            entity.Property(e => e.Personid).HasColumnName("personid");
+            entity.Property(e => e.Position)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("position");
+            entity.Property(e => e.Positionother)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("positionother");
+            entity.Property(e => e.Title)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("title");
+            entity.Property(e => e.Trainingrecordid).HasColumnName("trainingrecordid");
+            entity.Property(e => e.Url)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("url");
+            entity.Property(e => e.Website)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("website");
+            entity.Property(e => e.Woman)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("woman");
+            entity.Property(e => e.Yearsposition)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("yearsposition");
+        });
+
         modelBuilder.Entity<Person>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK_T32_Questionnaire.person");
@@ -56,6 +455,9 @@ public partial class BumcOrgContext : DbContext
                 .HasMaxLength(250)
                 .IsUnicode(false)
                 .HasColumnName("citizenship");
+            entity.Property(e => e.Dateadded)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnName("dateadded");
             entity.Property(e => e.Disability)
                 .HasMaxLength(250)
                 .IsUnicode(false)

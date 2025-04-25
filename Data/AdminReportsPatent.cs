@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 namespace T32_TraineeGrant;
 
-public partial class Person
+public partial class AdminReportsPatent
 {
-    public int Id { get; set; }
-
-    public string Buid { get; set; } = null!;
-
     public string Lastname { get; set; } = null!;
 
     public string Firstname { get; set; } = null!;
 
     public string Email { get; set; } = null!;
+
+    public int Expr2 { get; set; }
+
+    public string? Expr1 { get; set; }
 
     public string? Orcidid { get; set; }
 
@@ -38,4 +38,18 @@ public partial class Person
     public string? Yearsposition { get; set; }
 
     public DateOnly? Dateadded { get; set; }
+
+    public int Id { get; set; }
+
+    public int? Personid { get; set; }
+
+    public int? Trainingrecordid { get; set; }
+
+    public string? Buid { get; set; }
+
+    public string Inventors { get; set; } = null!;
+
+    public string Title { get; set; } = null!;
+
+    public DateOnly? Dateissued { get; set; }
 }

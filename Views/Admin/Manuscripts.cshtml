@@ -1,0 +1,106 @@
+﻿@model IEnumerable<T32_TraineeGrant.AdminReportsManuscript>
+
+<h4>
+    Manuscripts<br />
+    
+</h4>
+<a class="link-opacity-100" href="~/Admin/index">Back to menu</a>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Grant
+            </th>
+            <th>
+                Trainee
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Buid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Trainingrecordid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Authors)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Journal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Volume)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pages)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DoiPmidPmcid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Statusother)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Expr1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lastname)  @Html.DisplayFor(modelItem => item.Firstname)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Buid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Trainingrecordid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Authors)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Journal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Volume)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pages)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoiPmidPmcid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Statusother)
+            </td>
+            <td>
+               @*  <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> *@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

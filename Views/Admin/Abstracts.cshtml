@@ -1,0 +1,94 @@
+﻿@model IEnumerable<T32_TraineeGrant.AdminReportsAbstract>
+
+<h4>
+   Abstracts<br />
+  </h4>
+<p>
+        <a class="link-opacity-100" href="~/Admin/index">Back to menu</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Grant
+            </th>
+            <th>
+              Trainee
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.Buid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Authors)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Conference)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PosterOral)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Presenter)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                   @Html.DisplayFor(modelItem => item.Expr1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lastname)  @Html.DisplayFor(modelItem => item.Firstname)
+                </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.Buid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Authors)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Conference)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PosterOral)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Presenter)
+            </td>
+            <td>
+               @*  <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> *@
+            </td> 
+        </tr>
+}
+    </tbody>
+</table>
