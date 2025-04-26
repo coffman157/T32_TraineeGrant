@@ -7,7 +7,7 @@
 <a class="link-opacity-100" href="~/Admin/index">Back to menu</a>
 
 
-<table class="table">
+<table class="table" id="myTable">
     <thead>
         <tr>
             <th>
@@ -104,3 +104,22 @@
 }
     </tbody>
 </table>
+@section Scripts {
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#myTable').DataTable({
+                "processing": true,
+                "deferRender": true,
+                "pageLength": 100
+            });
+
+
+
+
+        });
+
+
+    </script>
+}

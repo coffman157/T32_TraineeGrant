@@ -1,48 +1,49 @@
 ﻿@model IEnumerable<T32_TraineeGrant.AdminReportsVideo>
-   <h4>
-        Videos<br />
-      
-    </h4>
+<h4>
+    Videos<br />
+
+</h4>
 <a class="link-opacity-100" href="~/Admin/index">Back to menu</a>
-   
-    <table class="table">
-        <thead>
-            <tr>
+
+<table class="table" id="myTable">
+    <thead>
+        <tr>
             <th>
                 Grant
             </th>
             <th>
                 Trainee
             </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Personid)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Buid)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Trainingrecordid)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Authors)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Title)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Website)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Dateuploaded)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Url)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model) {
+            <th>
+                @Html.DisplayNameFor(model => model.Personid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Buid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Trainingrecordid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Authors)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Website)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dateuploaded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Url)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Expr1)
@@ -75,11 +76,31 @@
                     @Html.DisplayFor(modelItem => item.Url)
                 </td>
                 <td>
-                   @*  <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    @*  <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> *@
                 </td>
             </tr>
-            }
-        </tbody>
-    </table>
+        }
+    </tbody>
+</table>
+@section Scripts {
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#myTable').DataTable({
+                "processing": true,
+                "deferRender": true,
+                "pageLength": 100
+            });
+
+
+
+
+        });
+
+
+    </script>
+}
+

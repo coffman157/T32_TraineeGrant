@@ -1,21 +1,38 @@
 ﻿@model IEnumerable<T32_TraineeGrant.AdminReportsAbstract>
+@* 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#myTable').DataTable(
+                {
+                    "iDisplayLength": 50,
+                }
+            );
+        });
+    </script> *@
+<script type="text/javascript">
+    $('#myTable').dataTable({
+    });
+</script>
+<link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" />
+
+<script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
 
 <h4>
-   Abstracts<br />
-  </h4>
+    Abstracts<br />
+</h4>
 <p>
-        <a class="link-opacity-100" href="~/Admin/index">Back to menu</a>
+    <a class="link-opacity-100" href="~/Admin/index">Back to menu</a>
 </p>
-<table class="table">
+<table class="table" id="myTable">
     <thead>
         <tr>
             <th>
-               Grant
+                Grant
             </th>
             <th>
-              Trainee
+                Trainee
             </th>
-           
+
             <th>
                 @Html.DisplayNameFor(model => model.Buid)
             </th>
@@ -43,52 +60,73 @@
             <th>
                 @Html.DisplayNameFor(model => model.Presenter)
             </th>
-            <th></th>
+            @*   <th></th> *@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
+        @foreach (var item in Model)
+        {
+            <tr>
                 <td>
-                   @Html.DisplayFor(modelItem => item.Expr1)
+                    @Html.DisplayFor(modelItem => item.Expr1)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Lastname)  @Html.DisplayFor(modelItem => item.Firstname)
                 </td>
-           
-            <td>
-                @Html.DisplayFor(modelItem => item.Buid)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Authors)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Conference)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PosterOral)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Presenter)
-            </td>
-            <td>
-               @*  <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Buid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Authors)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Conference)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PosterOral)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Presenter)
+                </td>
+                @* <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> *@
-            </td> 
-        </tr>
-}
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> 
+            </td>  *@
+            </tr>
+        }
     </tbody>
 </table>
+@section Scripts {
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            
+            $('#myTable').DataTable({
+                "processing": true,
+                "deferRender": true,
+                "pageLength": 100
+            });
+
+         
+
+       
+        });
+
+       
+    </script>
+}
+
