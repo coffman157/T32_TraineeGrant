@@ -47,6 +47,11 @@ namespace Admin.Controllers
             //ViewBag.projname = projname.Title;
             return View(await _context.AdminReportsAbstracts.ToListAsync());
         }
+        public async Task<IActionResult> Others()
+        {
+         
+            return View(await _context.AdminReportsOthers.ToListAsync());
+        }
         public async Task<IActionResult> Manuscripts()
         {
             //int proj1 = Convert.ToInt32(HttpContext.Session.GetString("project"));
