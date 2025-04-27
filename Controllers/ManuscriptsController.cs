@@ -74,7 +74,7 @@ namespace T32_TraineeGrant.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Buid,Trainingrecordid,Authors,Title,Journal,Year,Volume,Pages,DoiPmidPmcid,Status,Statusother")] TrainingRecordManuscript trainingRecordManuscript)
+        public async Task<IActionResult> Create([Bind("Id,Buid,Trainingrecordid,Personid,Authors,Title,Journal,Year,Volume,Pages,DoiPmidPmcid,Status,Statusother")] TrainingRecordManuscript trainingRecordManuscript)
         {
             if (ModelState.IsValid)
             {
@@ -88,6 +88,17 @@ namespace T32_TraineeGrant.Controllers
         // GET: Manuscripts/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewBag.project = HttpContext.Session.GetString("project");
+            int proj1 = Convert.ToInt32(HttpContext.Session.GetString("project"));
+            string buid = HttpContext.Session.GetString("buid");
+            var trainee = _context.People.Where(a => a.Buid == buid).FirstOrDefault();
+            ViewBag.buid = trainee.Buid;
+            ViewBag.personid = trainee.Id;
+            ViewBag.firstname = trainee.Firstname;
+
+            ViewBag.lastname = trainee.Lastname;
+            var projname = _context.TrainingGrants.Where(a => a.Id == proj1).FirstOrDefault();
+            ViewBag.projname = projname.Title;
             if (id == null)
             {
                 return NotFound();
@@ -106,7 +117,7 @@ namespace T32_TraineeGrant.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Buid,Trainingrecordid,Authors,Title,Journal,Year,Volume,Pages,DoiPmidPmcid,Status,Statusother")] TrainingRecordManuscript trainingRecordManuscript)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Buid,Trainingrecordid,Personid,Authors,Title,Journal,Year,Volume,Pages,DoiPmidPmcid,Status,Statusother")] TrainingRecordManuscript trainingRecordManuscript)
         {
             if (id != trainingRecordManuscript.Id)
             {

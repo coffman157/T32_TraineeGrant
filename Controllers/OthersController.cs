@@ -9,16 +9,16 @@ using T32_TraineeGrant;
 
 namespace T32_TraineeGrant.Controllers
 {
-    public class VideosController : Controller
+    public class OthersController : Controller
     {
         private readonly BumcOrgContext _context;
 
-        public VideosController(BumcOrgContext context)
+        public OthersController(BumcOrgContext context)
         {
             _context = context;
         }
 
-        // GET: Videos
+        // GET: Others
         public async Task<IActionResult> Index()
         {
             int proj1 = Convert.ToInt32(HttpContext.Session.GetString("project"));
@@ -31,10 +31,10 @@ namespace T32_TraineeGrant.Controllers
             ViewBag.lastname = trainee.Lastname;
             var projname = _context.TrainingGrants.Where(a => a.Id == proj1).FirstOrDefault();
             ViewBag.projname = projname.Title;
-            return View(await _context.TrainingRecordVideos.ToListAsync());
+            return View(await _context.TrainingRecordOthers.ToListAsync());
         }
 
-        // GET: Videos/Details/5
+        // GET: Others/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -42,17 +42,17 @@ namespace T32_TraineeGrant.Controllers
                 return NotFound();
             }
 
-            var trainingRecordVideo = await _context.TrainingRecordVideos
+            var trainingRecordOther = await _context.TrainingRecordOthers
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (trainingRecordVideo == null)
+            if (trainingRecordOther == null)
             {
                 return NotFound();
             }
 
-            return View(trainingRecordVideo);
+            return View(trainingRecordOther);
         }
 
-        // GET: Videos/Create
+        // GET: Others/Create
         public IActionResult Create()
         {
             string buid = HttpContext.Session.GetString("buid");
@@ -71,27 +71,25 @@ namespace T32_TraineeGrant.Controllers
             return View();
         }
 
-        // POST: Videos/Create
+        // POST: Others/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Personid,Buid,Trainingrecordid,Authors,Title,Website,Dateuploaded,Url")] TrainingRecordVideo trainingRecordVideo)
+        public async Task<IActionResult> Create([Bind("Id,Trainingrecordid,Personid,Buid,Date,Description")] TrainingRecordOther trainingRecordOther)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(trainingRecordVideo);
+                _context.Add(trainingRecordOther);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(trainingRecordVideo);
+            return View(trainingRecordOther);
         }
 
-        // GET: Videos/Edit/5
+        // GET: Others/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            ViewBag.project = HttpContext.Session.GetString("project");
-            int proj1 = Convert.ToInt32(HttpContext.Session.GetString("project"));
             string buid = HttpContext.Session.GetString("buid");
             var trainee = _context.People.Where(a => a.Buid == buid).FirstOrDefault();
             ViewBag.buid = trainee.Buid;
@@ -99,6 +97,10 @@ namespace T32_TraineeGrant.Controllers
             ViewBag.firstname = trainee.Firstname;
 
             ViewBag.lastname = trainee.Lastname;
+            ViewBag.project = HttpContext.Session.GetString("project");
+            int proj1 = Convert.ToInt32(HttpContext.Session.GetString("project"));
+
+
             var projname = _context.TrainingGrants.Where(a => a.Id == proj1).FirstOrDefault();
             ViewBag.projname = projname.Title;
             if (id == null)
@@ -106,22 +108,22 @@ namespace T32_TraineeGrant.Controllers
                 return NotFound();
             }
 
-            var trainingRecordVideo = await _context.TrainingRecordVideos.FindAsync(id);
-            if (trainingRecordVideo == null)
+            var trainingRecordOther = await _context.TrainingRecordOthers.FindAsync(id);
+            if (trainingRecordOther == null)
             {
                 return NotFound();
             }
-            return View(trainingRecordVideo);
+            return View(trainingRecordOther);
         }
 
-        // POST: Videos/Edit/5
+        // POST: Others/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Personid,Buid,Trainingrecordid,Authors,Title,Website,Dateuploaded,Url")] TrainingRecordVideo trainingRecordVideo)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Trainingrecordid,Personid,Buid,Date,Description")] TrainingRecordOther trainingRecordOther)
         {
-            if (id != trainingRecordVideo.Id)
+            if (id != trainingRecordOther.Id)
             {
                 return NotFound();
             }
@@ -130,12 +132,12 @@ namespace T32_TraineeGrant.Controllers
             {
                 try
                 {
-                    _context.Update(trainingRecordVideo);
+                    _context.Update(trainingRecordOther);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TrainingRecordVideoExists(trainingRecordVideo.Id))
+                    if (!TrainingRecordOtherExists(trainingRecordOther.Id))
                     {
                         return NotFound();
                     }
@@ -146,10 +148,10 @@ namespace T32_TraineeGrant.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(trainingRecordVideo);
+            return View(trainingRecordOther);
         }
 
-        // GET: Videos/Delete/5
+        // GET: Others/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -157,34 +159,34 @@ namespace T32_TraineeGrant.Controllers
                 return NotFound();
             }
 
-            var trainingRecordVideo = await _context.TrainingRecordVideos
+            var trainingRecordOther = await _context.TrainingRecordOthers
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (trainingRecordVideo == null)
+            if (trainingRecordOther == null)
             {
                 return NotFound();
             }
 
-            return View(trainingRecordVideo);
+            return View(trainingRecordOther);
         }
 
-        // POST: Videos/Delete/5
+        // POST: Others/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var trainingRecordVideo = await _context.TrainingRecordVideos.FindAsync(id);
-            if (trainingRecordVideo != null)
+            var trainingRecordOther = await _context.TrainingRecordOthers.FindAsync(id);
+            if (trainingRecordOther != null)
             {
-                _context.TrainingRecordVideos.Remove(trainingRecordVideo);
+                _context.TrainingRecordOthers.Remove(trainingRecordOther);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TrainingRecordVideoExists(int id)
+        private bool TrainingRecordOtherExists(int id)
         {
-            return _context.TrainingRecordVideos.Any(e => e.Id == id);
+            return _context.TrainingRecordOthers.Any(e => e.Id == id);
         }
     }
 }

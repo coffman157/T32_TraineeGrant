@@ -90,6 +90,19 @@ namespace T32_TraineeGrant.Controllers
         // GET: Patents/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            string buid = HttpContext.Session.GetString("buid");
+            var trainee = _context.People.Where(a => a.Buid == buid).FirstOrDefault();
+            ViewBag.buid = trainee.Buid;
+            ViewBag.personid = trainee.Id;
+            ViewBag.firstname = trainee.Firstname;
+
+            ViewBag.lastname = trainee.Lastname;
+            ViewBag.project = HttpContext.Session.GetString("project");
+            int proj1 = Convert.ToInt32(HttpContext.Session.GetString("project"));
+
+
+            var projname = _context.TrainingGrants.Where(a => a.Id == proj1).FirstOrDefault();
+            ViewBag.projname = projname.Title;
             if (id == null)
             {
                 return NotFound();

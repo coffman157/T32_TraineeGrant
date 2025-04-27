@@ -7,6 +7,8 @@ public partial class TrainingRecordAbstract
 {
     public int Id { get; set; }
 
+    public int? Personid { get; set; }
+
     public int? Trainingrecordid { get; set; }
 
     public string Buid { get; set; } = null!;

@@ -76,7 +76,7 @@ namespace T32_TraineeGrant.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Trainingrecordid,Buid,Type,Authors,Title,Conference,City,Date,PosterOral,Presenter")] TrainingRecordAbstract trainingRecordAbstract)
+        public async Task<IActionResult> Create([Bind("Id,Trainingrecordid,Personid,Buid,Type,Authors,Title,Conference,City,Date,PosterOral,Presenter")] TrainingRecordAbstract trainingRecordAbstract)
         {
             if (ModelState.IsValid)
             {
@@ -118,7 +118,7 @@ namespace T32_TraineeGrant.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Trainingrecordid,Buid,Type,Authors,Title,Conference,City,Date,PosterOral,Presenter")] TrainingRecordAbstract trainingRecordAbstract)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Trainingrecordid,Personid,Buid,Type,Authors,Title,Conference,City,Date,PosterOral,Presenter")] TrainingRecordAbstract trainingRecordAbstract)
         {
             if (id != trainingRecordAbstract.Id)
             {

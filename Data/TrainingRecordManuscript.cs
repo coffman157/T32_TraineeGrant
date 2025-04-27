@@ -11,6 +11,8 @@ public partial class TrainingRecordManuscript
 
     public int Trainingrecordid { get; set; }
 
+    public int? Personid { get; set; }
+
     public string Authors { get; set; } = null!;
 
     public string Title { get; set; } = null!;
